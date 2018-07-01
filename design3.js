@@ -1,0 +1,40 @@
+// Select color input
+var height,width,color;
+$('#sizePicker').submit(function(event){
+  event.preventDefault();
+  height=$('#inputHeight').val();
+  width=$('#inputWidth').val();
+  //console.log(" "+height)
+  makeGrid(height,width)
+})
+// Select size input
+
+
+// When size is submitted by the user, call makeGrid()
+
+function makeGrid(x,y) {
+$('tr').remove()
+// Your code goes here!
+createPixel(x,y);
+applyColor();
+}
+function createPixel(x,y){
+  for (var i = 1; i <= x; i++){
+    $('#pixelCanvas').append('<tr id=table' + i + '></tr>');
+    //
+    for (var j = 1; j<=y; j++) {
+      $('#table' + i).append('<td></td>');
+    }
+  }
+}
+function applyColor() {
+  $('td').click(function addColor() {
+    color = $('#colorPicker').val();
+    if ($(this).attr('style')) {
+      $('this').removeAttr('style');
+    }
+    else{
+      $(this).attr('style', 'background-color:' + color);
+    }
+  });
+}
